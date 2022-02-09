@@ -16,7 +16,7 @@ Removes the mosaic censor from characters in **Insult Order**. Small footprint v
 
 For **Insult Order**.
 
-Updated version of RipeDurian's IOTextureReplacer I didn't make this plugin, just updated the syntax to BepInEx 5.4. 
+Updated version of RipeDurian's IOTextureReplacer. I didn't make this plugin, just updated the syntax to BepInEx 5.4. 
 
 Original project: https://github.com/RipeDurian/IOPlugins
 
