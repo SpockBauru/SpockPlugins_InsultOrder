@@ -10,3 +10,4 @@ Plugins for Miconisomi games
 ## IO_Demosaic
 Removes the mosaic censor from characters.
 
+**V1.0 - [Download](https://github.com/SpockBauru/SpockPlugins_Miconisomi/releases/tag/r1)**
