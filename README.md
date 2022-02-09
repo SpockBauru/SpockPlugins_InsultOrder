@@ -8,11 +8,13 @@ Plugins for Miconisomi games
 2. Extract the plugin .zip file to your game folder
 
 ## IO_Demosaic
-Removes the mosaic censor from characters. Small footprint version.
+Removes the mosaic censor from characters in **Insult Order**. Small footprint version.
 
 **V1.0 - [Download](https://github.com/SpockBauru/SpockPlugins_Miconisomi/releases/tag/r1)**
 
 ## IOTextureReplacer
+
+For **Insult Order**.
 
 Updated version of RipeDurian's IOTextureReplacer I didn't make this plugin, just updated the syntax to BepInEx 5.4. 
 
