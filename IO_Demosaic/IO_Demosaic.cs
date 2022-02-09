@@ -9,7 +9,7 @@ namespace IO_Demosaic
     public class IO_Demosaic : BaseUnityPlugin
     {
         // Set version in BepInEx and in AssemblyInfo
-        public const string Version = "1.0";
+        public const string Version = "1.1";
         public IO_Demosaic()
         {
             // Patch Everything
@@ -17,7 +17,6 @@ namespace IO_Demosaic
         }
 
         //===============================================Hooks===============================================
-
         //Disabling flag for anal mosaic
         [HarmonyPrefix, HarmonyPatch(typeof(MozaicSetUp), "Start")]
         private static void AnalDemosaic()
@@ -25,11 +24,19 @@ namespace IO_Demosaic
             ConfigClass.AnalMoza = false;
         }
 
-        // Disable Mosaic Object
-        [HarmonyPostfix, HarmonyPatch(typeof(MozaicSetUp), "Update")]
+        // Disabling Mosaic Object in Characters
+        [HarmonyPostfix, HarmonyPatch(typeof(MozaicSetUp), "Start")]
         private static void CharacterDemosaic(Renderer ___MozaObj)
         {
-            ___MozaObj.gameObject.SetActive(false);
+            ___MozaObj.enabled=false;
+        }
+
+        // Disabling Mosaic Object in X-ray window
+        [HarmonyPostfix, HarmonyPatch(typeof(DanmenPixel), "Start")]
+        private static void XrayDemosaic(Renderer ___PC00_ute05_moza_ANA, Renderer ___PC00_ute05_moza)
+        {
+            ___PC00_ute05_moza_ANA.enabled=false;
+            ___PC00_ute05_moza.enabled = false;
         }
     }
 }
