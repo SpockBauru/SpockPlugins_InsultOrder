@@ -10,7 +10,7 @@ Plugins for Miconisomi games
 ## IO_Demosaic (Insult Order)
 Removes the mosaic censor from characters in **Insult Order**. Small footprint version.
 
-**V1.0 - [Download](https://github.com/SpockBauru/SpockPlugins_Miconisomi/releases/tag/r1)**
+**V1.1 - [Download](https://github.com/SpockBauru/SpockPlugins_Miconisomi/releases/tag/r3)**
 
 ## IOTextureReplacer (Insult Order)
 
