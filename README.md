@@ -2,6 +2,11 @@
 
 Plugins for Miconisomi games
 
-## IO_Demosaic
+## Installation
 
-Removes the mosaic censorship on characters
+1. Install [BepInEx v5.4](https://github.com/BepInEx/BepInEx/releases)
+2. Extract the plugin .zip file to your game folder
+
+## IO_Demosaic
+Removes the mosaic censor from characters.
+
