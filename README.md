@@ -25,4 +25,4 @@ Original project: https://github.com/RipeDurian/IOPlugins
 PNG files must be placed into `BepInEx\plugins\IOTextureReplacer\images` directory with their original filename
 Press Alt+F11 do dump all textures from the current scene into `BepInEx\Plugins\IOTextureReplacer\imageDump`
 
-**v0.1 = [Download](https://github.com/SpockBauru/SpockPlugins_Miconisomi/releases/tag/r2)
+**v0.1 = [Download](https://github.com/SpockBauru/SpockPlugins_Miconisomi/releases/tag/r2)**
