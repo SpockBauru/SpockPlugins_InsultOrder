@@ -8,7 +8,7 @@ Plugins for Miconisomi games
 2. Extract the plugin .zip file to your game folder
 
 ## IO_DisableTextScrolling (Insult Order)
-Removes the text scrolling effect in Insult Order dialog boxes, so it doesn't interfere with translations.
+Removes the text scrolling effect in Insult Order dialog boxes, so it doesn't interfere with [Translations](https://github.com/SpockBauru/IO_Translation).
 You can disable it in Configuration Manager.
 
 **V1.0 - [Download](https://github.com/SpockBauru/SpockPlugins_Miconisomi/releases/tag/r4)**
