@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IO_Demosaic", "IO_Demosaic\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IOTextureReplacer", "IOTextureReplacer\IOTextureReplacer.csproj", "{CA011C81-099E-4462-B119-C344F0F78AD2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IO_DisableTextScrolling", "IO_DisableTextScrolling\IO_DisableTextScrolling.csproj", "{5A583890-95C4-4356-BEFA-79B7B367B580}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{CA011C81-099E-4462-B119-C344F0F78AD2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CA011C81-099E-4462-B119-C344F0F78AD2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CA011C81-099E-4462-B119-C344F0F78AD2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A583890-95C4-4356-BEFA-79B7B367B580}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A583890-95C4-4356-BEFA-79B7B367B580}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A583890-95C4-4356-BEFA-79B7B367B580}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A583890-95C4-4356-BEFA-79B7B367B580}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

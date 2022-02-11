@@ -4,12 +4,12 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{5DFD5F8A-0440-4082-8B66-C8685295EFB4}</ProjectGuid>
+    <ProjectGuid>{5A583890-95C4-4356-BEFA-79B7B367B580}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>IO_Demosaic</RootNamespace>
-    <AssemblyName>IO_Demosaic</AssemblyName>
-    <Description>Demosaic for Insult Order</Description>
+    <RootNamespace>IO_DisableTextScrolling</RootNamespace>
+    <AssemblyName>IO_DisableTextScrolling</AssemblyName>
+    <Description>Disable ADV Text Scrolling</Description>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <FileAlignment>512</FileAlignment>
@@ -75,13 +75,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IO_Demosaic.cs" />
+    <Compile Include="IO_DisableTextScrolling.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>copy "$(TargetPath)" D:\Miconisomi\IO\GameData\BepInEx\plugins</PostBuildEvent>
+  </PropertyGroup>
   <Import Project="..\packages\BepInEx.Core.5.4.17\build\BepInEx.Core.targets" Condition="Exists('..\packages\BepInEx.Core.5.4.17\build\BepInEx.Core.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
@@ -89,7 +92,4 @@
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\BepInEx.Core.5.4.17\build\BepInEx.Core.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\BepInEx.Core.5.4.17\build\BepInEx.Core.targets'))" />
   </Target>
-  <PropertyGroup>
-    <PostBuildEvent>copy "$(TargetPath)" D:\Miconisomi\IO\GameData\BepInEx\plugins</PostBuildEvent>
-  </PropertyGroup>
 </Project>
