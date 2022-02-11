@@ -7,6 +7,12 @@ Plugins for Miconisomi games
 1. Install the x86 version of BepInEx 5.4 ([BepInEx_x86_5.4.x.x](https://github.com/BepInEx/BepInEx/releases))
 2. Extract the plugin .zip file to your game folder
 
+## IO_DisableTextScrolling (Insult Order)
+Removes the text scrolling in Insult Order dialog boxes, so it doesn't interfere with translations.
+You can disable it in Configuration Manager.
+
+**V1.0 - [Download](https://github.com/SpockBauru/SpockPlugins_Miconisomi/releases/tag/r4)**
+
 ## IO_Demosaic (Insult Order)
 Removes the mosaic censor from characters in **Insult Order**. Small footprint version.
 
