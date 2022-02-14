@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IOTextureReplacer", "IOText
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IO_DisableTextScrolling", "IO_DisableTextScrolling\IO_DisableTextScrolling.csproj", "{5A583890-95C4-4356-BEFA-79B7B367B580}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IO_ADVLiveDump", "IO_ADVLiveDump\IO_ADVLiveDump.csproj", "{77CFAC6E-4529-4A93-B326-DB3E4615870E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IO_ResizeKeypad", "IO_ResizeKeypad\IO_ResizeKeypad.csproj", "{DB4C63E2-F647-4573-AAC6-F51991849A6C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{5A583890-95C4-4356-BEFA-79B7B367B580}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5A583890-95C4-4356-BEFA-79B7B367B580}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5A583890-95C4-4356-BEFA-79B7B367B580}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77CFAC6E-4529-4A93-B326-DB3E4615870E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77CFAC6E-4529-4A93-B326-DB3E4615870E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77CFAC6E-4529-4A93-B326-DB3E4615870E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77CFAC6E-4529-4A93-B326-DB3E4615870E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DB4C63E2-F647-4573-AAC6-F51991849A6C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB4C63E2-F647-4573-AAC6-F51991849A6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB4C63E2-F647-4573-AAC6-F51991849A6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB4C63E2-F647-4573-AAC6-F51991849A6C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
