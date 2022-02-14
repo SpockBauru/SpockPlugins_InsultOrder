@@ -27,8 +27,9 @@ namespace IO_ResizeKeypad
         public void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)
         {
             ResizeKeypad();
-            //Recalculate again after 5 seconds, because bugs. My bad...
-            Invoke("ResizeKeypad", 5);
+            //Recalculate again after 2 seconds, because bugs. My bad...
+            CancelInvoke();
+            InvokeRepeating("ResizeKeypad", 2, 2);
         }
 
         private void ResizeKeypad()
@@ -42,7 +43,7 @@ namespace IO_ResizeKeypad
 
                 if (key != null)
                 {
-                    //saving position, because miconisomi...
+                    //saving position, because bugs...
                     pos = key.transform.position;
 
                     //changing box size
@@ -55,7 +56,7 @@ namespace IO_ResizeKeypad
                 }
             }
 
-            //key down have a special box, becayse miconisomi
+            //key minus have a special box, because miconisomi
             currentKey = "UI Root(FH)/TenKey/TenKey_BG/In/Key/Key_Minus/Label";
             GameObject keyMinus = GameObject.Find(currentKey);
 
