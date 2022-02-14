@@ -1,6 +1,6 @@
 ﻿using BepInEx;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using HarmonyLib;
 
 namespace IO_ResizeKeypad
 {
@@ -9,37 +9,43 @@ namespace IO_ResizeKeypad
     public class IO_ResizeKeypad : BaseUnityPlugin
     {
         // Set version in BepInEx and in AssemblyInfo
-        public const string Version = "0.1";
+        public const string Version = "0.2";
 
         //Internal names of Keypad Keys
-        string[] keyNames = {"Key1", "Key2", "Key3", "Key4", "Key5", "Key6", "Key7", "Key8", "Key9",
+        static string[] keyNames = {"Key1", "Key2", "Key3", "Key4", "Key5", "Key6", "Key7", "Key8", "Key9",
                              "KeyNum", "Key_Plus", "Key_Divide", "Key_Multiply", "Key_Period", "Key_Enter"};
-        string currentKey;
 
-        Vector3 pos;
+        static float counter = 0;
+        static string currentKey;
+        static GameObject key = null;
+        static Vector3 pos;
+        static UILabel keyText = null;
 
-        //just run when scene is complete loaded
-        public void Start()
+        public IO_ResizeKeypad()
         {
-            SceneManager.sceneLoaded += OnLevelFinishedLoading;
+            // Patch Everything
+            Harmony.CreateAndPatchAll(typeof(IO_ResizeKeypad));
         }
 
-        public void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)
+        [HarmonyPostfix, HarmonyPatch(typeof(TenKeyPad), "Update")]
+        private static void RepeatResize()
         {
-            ResizeKeypad();
-            //Recalculate again after 2 seconds, because bugs. My bad...
-            CancelInvoke();
-            InvokeRepeating("ResizeKeypad", 2, 2);
+            //Repeating every second because bugs, my bad...
+            counter += Time.deltaTime;
+            if (counter > 1f)
+            {
+                ResizeKeypad();
+                counter = 0f;
+            }
         }
 
-        private void ResizeKeypad()
+        private static void ResizeKeypad()
         {
-            Logger.LogDebug("Keypad Resizer Called");
             //Make all boxes the same sixe
             for (int i = 0; i < keyNames.Length; i++)
             {
                 currentKey = "UI Root(FH)/TenKey/TenKey_BG/In/Key/" + keyNames[i] + "/Label";
-                GameObject key = GameObject.Find(currentKey);
+                key = GameObject.Find(currentKey);
 
                 if (key != null)
                 {
@@ -47,10 +53,10 @@ namespace IO_ResizeKeypad
                     pos = key.transform.position;
 
                     //changing box size
-                    UILabel keytext = key.GetComponent<UILabel>();
-                    keytext.fontSize = 30;
-                    keytext.lineWidth = 110;
-                    keytext.lineHeight = 60;
+                    keyText = key.GetComponent<UILabel>();
+                    keyText.fontSize = 30;
+                    keyText.width = 110;
+                    keyText.height = 60;
 
                     key.transform.position = pos;
                 }
@@ -58,26 +64,36 @@ namespace IO_ResizeKeypad
 
             //key minus have a special box, because miconisomi
             currentKey = "UI Root(FH)/TenKey/TenKey_BG/In/Key/Key_Minus/Label";
-            GameObject keyMinus = GameObject.Find(currentKey);
-
-            if (keyMinus != null)
+            key = GameObject.Find(currentKey);
+            if (key != null)
             {
-                UILabel keytext = keyMinus.GetComponent<UILabel>();
-                keytext.fontSize = 30;
-                keytext.lineWidth = 110;
-                keytext.lineHeight = 40;
+                //saving position, because bugs...
+                pos = key.transform.position;
+
+                //changing box size
+                keyText = key.GetComponent<UILabel>();
+                keyText.fontSize = 30;
+                keyText.width = 110;
+                keyText.height = 40;
+
+                key.transform.position = pos;
             }
 
             //key 0 is bigger
             currentKey = "UI Root(FH)/TenKey/TenKey_BG/In/Key/Key0/Label";
-            GameObject keyEnter = GameObject.Find(currentKey);
-
-            if (keyEnter != null)
+            key = GameObject.Find(currentKey);
+            if (key != null)
             {
-                UILabel keytext = keyEnter.GetComponent<UILabel>();
-                keytext.fontSize = 30;
-                keytext.lineWidth = 200;
-                keytext.lineHeight = 60;
+                //saving position, because bugs...
+                pos = key.transform.position;
+
+                //changing box size
+                keyText = key.GetComponent<UILabel>();
+                keyText.fontSize = 30;
+                keyText.width = 200;
+                keyText.height = 60;
+
+                key.transform.position = pos;
             }
         }
     }

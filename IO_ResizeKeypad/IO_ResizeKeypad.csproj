@@ -9,7 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>IO_ResizeKeypad</RootNamespace>
     <AssemblyName>IO_ResizeKeypad</AssemblyName>
+	<Description>Resize Keypad Fonts on H-Scenes</Description>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+	<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
     <NuGetPackageImportStamp>

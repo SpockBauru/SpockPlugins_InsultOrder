@@ -1,7 +1,6 @@
 ﻿using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
-using static IO_ResizeKeypad.IO_ResizeKeypad;
 
 // As informações gerais sobre um assembly são controladas por
 // conjunto de atributos. Altere estes valores de atributo para modificar as informações
@@ -33,5 +32,5 @@ using static IO_ResizeKeypad.IO_ResizeKeypad;
 // É possível especificar todos os valores ou usar como padrão os Números de Build e da Revisão
 // usando o "*" como mostrado abaixo:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion(Version)]
-[assembly: AssemblyFileVersion(Version)]
+[assembly: AssemblyVersion(IO_ResizeKeypad.IO_ResizeKeypad.Version)]
+[assembly: AssemblyFileVersion(IO_ResizeKeypad.IO_ResizeKeypad.Version)]
