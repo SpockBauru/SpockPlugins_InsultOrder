@@ -7,12 +7,12 @@ using System.Windows;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("IO_EnglishLauncher")]
+[assembly: AssemblyTitle("Insult Order English Launcher")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("IO_EnglishLauncher")]
-[assembly: AssemblyCopyright("Copyright ©  2022")]
+[assembly: AssemblyCompany("Miconisomi")]
+[assembly: AssemblyProduct("Insult Order English Launcher")]
+[assembly: AssemblyCopyright("Miconisomi")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
