@@ -11,7 +11,7 @@ Plugins for Miconisomi games
 **Installation**:
 Extract the .zip file to your game folder
 
-## IO_EnglishLauncher
+## IO_EnglishLauncher (Insult Order)
 
 An English version of the Insult Order launcher made to look as close as possible to the original.
 
