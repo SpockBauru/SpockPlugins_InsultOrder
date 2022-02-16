@@ -5,7 +5,19 @@ Plugins for Miconisomi games
 ## Installation
 
 1. Install the x86 version of BepInEx 5.4 ([BepInEx_x86_5.4.x.x](https://github.com/BepInEx/BepInEx/releases))
-2. Extract the plugin .zip file to your game folder
+2. Install the [Configuration Manager](https://github.com/BepInEx/BepInEx.ConfigurationManager/releases)
+3. Extract the plugin .zip file to your game folder
+
+## IO_ResizeKeypad v1.0 (Insult Order)
+
+Keypad in H-Scenes have weird scaling issues when translated.
+This plugin try to fix this by making the keys have a fixed size.
+
+**Prerequisites**:
+[BepInEx v5.4](https://github.com/BepInEx/BepInEx/releases)
+
+**Installation**:
+**V1.0 - [Download](https://github.com/SpockBauru/SpockPlugins_Miconisomi/releases/tag/r5)**
 
 ## IO_DisableTextScrolling (Insult Order)
 Removes the text scrolling effect in Insult Order dialog boxes, so it doesn't interfere with [Translations](https://github.com/SpockBauru/IO_Translation).
