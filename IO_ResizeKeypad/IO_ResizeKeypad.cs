@@ -9,11 +9,11 @@ namespace IO_ResizeKeypad
     public class IO_ResizeKeypad : BaseUnityPlugin
     {
         // Set version in BepInEx and in AssemblyInfo
-        public const string Version = "0.2";
+        public const string Version = "1.0";
 
         //Internal names of Keypad Keys
         static string[] keyNames = {"Key1", "Key2", "Key3", "Key4", "Key5", "Key6", "Key7", "Key8", "Key9",
-                             "KeyNum", "Key_Plus", "Key_Divide", "Key_Multiply", "Key_Period", "Key_Enter"};
+                                    "KeyNum", "Key_Plus", "Key_Divide", "Key_Multiply", "Key_Period", "Key_Enter"};
 
         static float counter = 0;
         static string currentKey;
@@ -34,37 +34,29 @@ namespace IO_ResizeKeypad
             counter += Time.deltaTime;
             if (counter > 1f)
             {
-                ResizeKeypad();
                 counter = 0f;
+
+                //Make generic key boxes the same size
+                for (int i = 0; i < keyNames.Length; i++)
+                {
+                    currentKey = "UI Root(FH)/TenKey/TenKey_BG/In/Key/" + keyNames[i] + "/Label";
+                    ResizeKey(currentKey, 30, 110, 60);
+                }
+
+                //key minus have a special box, because miconisomi
+                currentKey = "UI Root(FH)/TenKey/TenKey_BG/In/Key/Key_Minus/Label";
+                ResizeKey(currentKey, 30, 110, 40);
+
+                //key 0 is bigger
+                currentKey = "UI Root(FH)/TenKey/TenKey_BG/In/Key/Key0/Label";
+                ResizeKey(currentKey, 30, 200, 60);
             }
         }
 
-        private static void ResizeKeypad()
+        private static void ResizeKey(string currentKey, int fontSize, int boxWidth, int boxHeight)
         {
-            //Make all boxes the same sixe
-            for (int i = 0; i < keyNames.Length; i++)
-            {
-                currentKey = "UI Root(FH)/TenKey/TenKey_BG/In/Key/" + keyNames[i] + "/Label";
-                key = GameObject.Find(currentKey);
-
-                if (key != null)
-                {
-                    //saving position, because bugs...
-                    pos = key.transform.position;
-
-                    //changing box size
-                    keyText = key.GetComponent<UILabel>();
-                    keyText.fontSize = 30;
-                    keyText.width = 110;
-                    keyText.height = 60;
-
-                    key.transform.position = pos;
-                }
-            }
-
-            //key minus have a special box, because miconisomi
-            currentKey = "UI Root(FH)/TenKey/TenKey_BG/In/Key/Key_Minus/Label";
             key = GameObject.Find(currentKey);
+
             if (key != null)
             {
                 //saving position, because bugs...
@@ -72,26 +64,9 @@ namespace IO_ResizeKeypad
 
                 //changing box size
                 keyText = key.GetComponent<UILabel>();
-                keyText.fontSize = 30;
-                keyText.width = 110;
-                keyText.height = 40;
-
-                key.transform.position = pos;
-            }
-
-            //key 0 is bigger
-            currentKey = "UI Root(FH)/TenKey/TenKey_BG/In/Key/Key0/Label";
-            key = GameObject.Find(currentKey);
-            if (key != null)
-            {
-                //saving position, because bugs...
-                pos = key.transform.position;
-
-                //changing box size
-                keyText = key.GetComponent<UILabel>();
-                keyText.fontSize = 30;
-                keyText.width = 200;
-                keyText.height = 60;
+                keyText.fontSize = fontSize;
+                keyText.width = boxWidth;
+                keyText.height = boxHeight;
 
                 key.transform.position = pos;
             }
