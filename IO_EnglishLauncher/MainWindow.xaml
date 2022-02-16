@@ -1,0 +1,510 @@
+﻿<Window x:Class="IO_EnglishLauncher.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+    Title="Insult Order"
+	AllowsTransparency="True"
+	WindowStyle="None"
+	Background="#00FFFFFF"
+	Icon="Images/icon.png"
+	Width="853"
+	Height="480" >
+    <FrameworkElement.Resources>
+        <ResourceDictionary>
+            <Style
+				TargetType="{x:Type Button}"
+				x:Key="MyButtonStyle">
+                <Setter
+					Property="FrameworkElement.OverridesDefaultStyle"
+					Value="True" />
+                <Setter
+					Property="Margin"
+					Value="5" />
+                <Setter
+					Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate
+							TargetType="{x:Type Button}">
+                            <Border
+								Name="border"
+								BorderThickness="1"
+								Padding="4,2"
+								BorderBrush="#FFA9A9A9"
+								CornerRadius="3"
+								Background="{TemplateBinding Background}">
+                                <ContentPresenter
+									HorizontalAlignment="Center"
+									VerticalAlignment="Center" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger
+									Property="UIElement.IsMouseOver"
+									Value="True">
+                                    <Setter
+										TargetName="border"
+										Property="BorderBrush"
+										Value="#FF000000" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+        </ResourceDictionary>
+    </FrameworkElement.Resources>
+    <Grid
+		Width="853"
+		Height="480">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition
+				Width="805*" />
+            <ColumnDefinition
+				Width="48*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition
+				Height="97*" />
+            <RowDefinition
+				Height="23*" />
+        </Grid.RowDefinitions>
+        <Panel.Background>
+            <ImageBrush
+				ImageSource="Images/MainBack.png"
+				Stretch="Fill" />
+        </Panel.Background>
+        <ComboBox
+			Name="ScreenSize"
+			Height="29"
+			HorizontalAlignment="Left"
+			Margin="540,25,0,0"
+			VerticalAlignment="Top"
+			Width="210"
+			FontSize="18"
+			SelectionChanged="comboBox1_SelectionChanged" />
+        <CheckBox
+			Name="FullScreenCheckBox"
+			Margin="538,66,0,0"
+			Foreground="#FFFFFFFF"
+			HorizontalAlignment="Left"
+			VerticalAlignment="Top"
+			Checked="FullScreenCheckBox_Checked"
+			Click="FullScreenCheckBox_Click">
+            <FrameworkElement.LayoutTransform>
+                <ScaleTransform
+					ScaleX="2.0"
+					ScaleY="2.0" />
+            </FrameworkElement.LayoutTransform>
+            <TextBlock
+				Text="Full Screen"
+				FontSize="11"
+				Margin="0,0,4,0" />
+        </CheckBox>
+        <ComboBox
+			Name="Quality"
+			Height="29"
+			HorizontalAlignment="Left"
+			Margin="540,106,0,0"
+			VerticalAlignment="Top"
+			Width="210"
+			FontSize="18"
+			SelectionChanged="Quality_SelectionChanged" />
+        <ComboBox
+			Name="Display"
+			Height="29"
+			HorizontalAlignment="Left"
+			Margin="541,152,0,0"
+			VerticalAlignment="Top"
+			Width="209"
+			FontSize="18"
+			SelectionChanged="Display_SelectionChanged" />
+        <Button
+			Name="ManualBt"
+			Content="Open Manual"
+			HorizontalAlignment="Left"
+			Margin="540,289,0,0"
+			VerticalAlignment="Top"
+			Width="95"
+			Height="35"
+			Foreground="#FF000000"
+			BorderBrush="#FF000000"
+			FontWeight="Bold"
+			FontSize="13"
+			Click="ManualBt_Click">
+            <Control.Background>
+                <LinearGradientBrush
+					EndPoint="0.5,1"
+					MappingMode="RelativeToBoundingBox"
+					StartPoint="0.5,0">
+                    <GradientStop
+						Color="#FFF9F5F5"
+						Offset="0" />
+                    <GradientStop
+						Color="#FF807A7A"
+						Offset="1" />
+                    <GradientStop
+						Color="#FFE4E4E4"
+						Offset="0.471" />
+                    <GradientStop
+						Color="#FFC7C7C7"
+						Offset="0.532" />
+                </LinearGradientBrush>
+            </Control.Background>
+        </Button>
+        <Button
+			Name="SystemBt"
+			Content="System Info"
+			HorizontalAlignment="Left"
+			Margin="640,289,0,0"
+			VerticalAlignment="Top"
+			Width="95"
+			Height="35"
+			Foreground="#FF000000"
+			BorderBrush="#FF000000"
+			FontWeight="Bold"
+			FontSize="13"
+			Click="SystemBt_Click">
+            <Control.Background>
+                <LinearGradientBrush
+					EndPoint="0.5,1"
+					MappingMode="RelativeToBoundingBox"
+					StartPoint="0.5,0">
+                    <GradientStop
+						Color="#FFF9F5F5"
+						Offset="0" />
+                    <GradientStop
+						Color="#FF807A7A"
+						Offset="1" />
+                    <GradientStop
+						Color="#FFE4E4E4"
+						Offset="0.471" />
+                    <GradientStop
+						Color="#FFC7C7C7"
+						Offset="0.532" />
+                </LinearGradientBrush>
+            </Control.Background>
+        </Button>
+        <Button
+			Name="ScreenShotBt"
+			Content="Open Screenshot Folder"
+			HorizontalAlignment="Left"
+			Margin="540,368,0,0"
+			VerticalAlignment="Top"
+			Width="295"
+			Height="35"
+			Foreground="#FF000000"
+			BorderBrush="#FF000000"
+			FontSize="16"
+			FontWeight="Bold"
+			Grid.RowSpan="2"
+			Grid.ColumnSpan="2"
+			Click="ScreenShotBt_Click">
+            <Control.Background>
+                <LinearGradientBrush
+					EndPoint="0.5,1"
+					MappingMode="RelativeToBoundingBox"
+					StartPoint="0.5,0">
+                    <GradientStop
+						Color="#FFF9F5F5"
+						Offset="0" />
+                    <GradientStop
+						Color="#FF807A7A"
+						Offset="1" />
+                    <GradientStop
+						Color="#FFE4E4E4"
+						Offset="0.471" />
+                    <GradientStop
+						Color="#FFC7C7C7"
+						Offset="0.532" />
+                </LinearGradientBrush>
+            </Control.Background>
+        </Button>
+        <Button
+			Name="WebSite"
+			Content="Miconisomi Site"
+			HorizontalAlignment="Left"
+			Margin="593,19,0,0"
+			VerticalAlignment="Top"
+			Width="130"
+			Height="35"
+			Foreground="#FF000000"
+			BorderBrush="#FF000000"
+			FontSize="14"
+			Grid.Row="1"
+			FontWeight="Bold"
+			Click="WebSite_Click">
+            <Control.Background>
+                <LinearGradientBrush
+					EndPoint="0.5,1"
+					MappingMode="RelativeToBoundingBox"
+					StartPoint="0.5,0">
+                    <GradientStop
+						Color="#FFF9F5F5"
+						Offset="0" />
+                    <GradientStop
+						Color="#FF807A7A"
+						Offset="1" />
+                    <GradientStop
+						Color="#FFE4E4E4"
+						Offset="0.471" />
+                    <GradientStop
+						Color="#FFC7C7C7"
+						Offset="0.532" />
+                </LinearGradientBrush>
+            </Control.Background>
+        </Button>
+        <Button
+			Name="GameQuit"
+			Content="Quit"
+			HorizontalAlignment="Left"
+			Margin="725,19,0,0"
+			VerticalAlignment="Top"
+			Width="110"
+			Height="35"
+			Foreground="#FFFFFFFF"
+			BorderBrush="#FF000000"
+			FontSize="16"
+			FontWeight="Bold"
+			Grid.Row="1"
+			Grid.ColumnSpan="2"
+			Click="GameQuit_Click">
+            <Control.Background>
+                <LinearGradientBrush
+					EndPoint="0.5,1"
+					MappingMode="RelativeToBoundingBox"
+					StartPoint="0.5,0">
+                    <GradientStop
+						Color="#FFFF3261"
+						Offset="0" />
+                    <GradientStop
+						Color="#FFA00000"
+						Offset="1" />
+                </LinearGradientBrush>
+            </Control.Background>
+        </Button>
+        <Label
+			Name="label"
+			Content="Resolution"
+			HorizontalAlignment="Left"
+			Margin="755,24,-32,0"
+			VerticalAlignment="Top"
+			Width="130"
+			Foreground="#FFFFFFFF"
+			FontSize="18"
+			Grid.ColumnSpan="2" />
+        <Button
+			Name="GamePlay"
+			Content="PLAY"
+			HorizontalAlignment="Left"
+			Margin="540,192,0,0"
+			VerticalAlignment="Top"
+			Width="295"
+			Height="85"
+			BorderBrush="#FF000000"
+			FontSize="35"
+			Foreground="#FFFFFFFF"
+			FontWeight="Bold"
+			Grid.ColumnSpan="2"
+			Click="GamePlay_Click">
+            <Control.Background>
+                <LinearGradientBrush
+					EndPoint="0.5,1"
+					MappingMode="RelativeToBoundingBox"
+					StartPoint="0.5,0">
+                    <GradientStop
+						Color="#FFFFAE00"
+						Offset="0" />
+                    <GradientStop
+						Color="#FFEB7C01"
+						Offset="1" />
+                </LinearGradientBrush>
+            </Control.Background>
+        </Button>
+        <Label
+			Name="label_Copy"
+			Content="Select Monitor"
+			HorizontalAlignment="Left"
+			Margin="755,152,-2,0"
+			VerticalAlignment="Top"
+			Width="100"
+			Foreground="#FFFFFFFF"
+			FontSize="14"
+			Grid.ColumnSpan="2" Height="29" />
+        <Label
+			Name="label_Copy1"
+			Content="Quality"
+			HorizontalAlignment="Left"
+			Margin="755,105,-32,0"
+			VerticalAlignment="Top"
+			Width="130"
+			Foreground="#FFFFFFFF"
+			FontSize="18"
+			Grid.ColumnSpan="2" />
+        <Button
+			Name="SaveFolderBt"
+			Content="Open Save Folder"
+			HorizontalAlignment="Left"
+			Margin="540,329,0,0"
+			VerticalAlignment="Top"
+			Width="225"
+			Height="35"
+			Foreground="#FF000000"
+			BorderBrush="#FF000000"
+			FontSize="16"
+			FontWeight="Bold"
+			Click="SaveFolderBt_Click">
+            <Control.Background>
+                <LinearGradientBrush
+					EndPoint="0.5,1"
+					MappingMode="RelativeToBoundingBox"
+					StartPoint="0.5,0">
+                    <GradientStop
+						Color="#FFF9F5F5"
+						Offset="0" />
+                    <GradientStop
+						Color="#FF807A7A"
+						Offset="1" />
+                    <GradientStop
+						Color="#FFE4E4E4"
+						Offset="0.471" />
+                    <GradientStop
+						Color="#FFC7C7C7"
+						Offset="0.532" />
+                </LinearGradientBrush>
+            </Control.Background>
+        </Button>
+        <Button
+			Name="SupportForumBt"
+			Content="Forum"
+			HorizontalAlignment="Left"
+			Margin="740,289,0,0"
+			VerticalAlignment="Top"
+			Width="95"
+			Height="35"
+			Foreground="#FF000000"
+			BorderBrush="#FF000000"
+			FontWeight="Bold"
+			Grid.ColumnSpan="2"
+			FontSize="13"
+			Click="SupportForumBt_Click">
+            <Control.Background>
+                <LinearGradientBrush
+					EndPoint="0.5,1"
+					MappingMode="RelativeToBoundingBox"
+					StartPoint="0.5,0">
+                    <GradientStop
+						Color="#FFF9F5F5"
+						Offset="0" />
+                    <GradientStop
+						Color="#FF807A7A"
+						Offset="1" />
+                    <GradientStop
+						Color="#FFE4E4E4"
+						Offset="0.471" />
+                    <GradientStop
+						Color="#FFC7C7C7"
+						Offset="0.532" />
+                </LinearGradientBrush>
+            </Control.Background>
+        </Button>
+        <TextBox
+			Name="CommandLineBox"
+			HorizontalAlignment="Left"
+			Height="23"
+			Margin="45,62,0,0"
+			TextWrapping="Wrap"
+			VerticalAlignment="Top"
+			Width="790"
+			Grid.Row="1"
+			Grid.ColumnSpan="2"
+			RenderTransformOrigin="0.5,0.5">
+            <UIElement.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform />
+                    <SkewTransform />
+                    <RotateTransform
+						Angle="-0.005" />
+                    <TranslateTransform />
+                </TransformGroup>
+            </UIElement.RenderTransform>
+        </TextBox>
+        <Button
+			Name="CommandLineBt"
+			Content="&gt;_"
+			HorizontalAlignment="Left"
+			VerticalAlignment="Top"
+			Width="27"
+			Height="26"
+			Foreground="#B2FFFFFF"
+			FontSize="16"
+			FontWeight="Bold"
+			Margin="12,60,0,0"
+			Grid.Row="1"
+			Background="#99000000"
+			OpacityMask="#FFFFFFFF"
+			BorderBrush="{x:Null}"
+			Click="CommandLineBt_Click" />
+        <Button
+			Name="VideoFolderBt"
+			Content="VIDEO"
+			HorizontalAlignment="Left"
+			Margin="770,330,0,0"
+			VerticalAlignment="Top"
+			Width="65"
+			Height="35"
+			Foreground="#FF000000"
+			BorderBrush="#FF000000"
+			FontSize="16"
+			FontWeight="Bold"
+			Grid.ColumnSpan="2"
+			Click="VideoFolderBt_Click">
+            <Control.Background>
+                <LinearGradientBrush
+					EndPoint="0.5,1"
+					MappingMode="RelativeToBoundingBox"
+					StartPoint="0.5,0">
+                    <GradientStop
+						Color="#FFF9F5F5"
+						Offset="0" />
+                    <GradientStop
+						Color="#FF807A7A"
+						Offset="1" />
+                    <GradientStop
+						Color="#FFE4E4E4"
+						Offset="0.471" />
+                    <GradientStop
+						Color="#FFC7C7C7"
+						Offset="0.532" />
+                </LinearGradientBrush>
+            </Control.Background>
+        </Button>
+        <Button
+			Name="ReadMe"
+			Content="Readme"
+			HorizontalAlignment="Left"
+			Margin="540,0,0,38"
+			VerticalAlignment="Bottom"
+			Width="50"
+			Height="35"
+			BorderBrush="#FF000000"
+			Foreground="#FFFFFFFF"
+			FontWeight="Bold"
+			Grid.Row="1"
+			Click="Read_Click">
+            <Control.Background>
+                <LinearGradientBrush
+					EndPoint="0.5,1"
+					MappingMode="RelativeToBoundingBox"
+					StartPoint="0.5,0">
+                    <GradientStop
+						Color="#FF60B8FF"
+						Offset="0" />
+                    <GradientStop
+						Color="#FF2591E9"
+						Offset="1" />
+                </LinearGradientBrush>
+            </Control.Background>
+        </Button>
+    </Grid>
+</Window>

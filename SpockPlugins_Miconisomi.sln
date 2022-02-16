@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IO_ADVLiveDump", "IO_ADVLiv
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IO_ResizeKeypad", "IO_ResizeKeypad\IO_ResizeKeypad.csproj", "{DB4C63E2-F647-4573-AAC6-F51991849A6C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IO_EnglishLauncher", "IO_EnglishLauncher\IO_EnglishLauncher.csproj", "{526AD85F-0123-473C-BE60-CB3FAB32395A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{DB4C63E2-F647-4573-AAC6-F51991849A6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DB4C63E2-F647-4573-AAC6-F51991849A6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DB4C63E2-F647-4573-AAC6-F51991849A6C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{526AD85F-0123-473C-BE60-CB3FAB32395A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{526AD85F-0123-473C-BE60-CB3FAB32395A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{526AD85F-0123-473C-BE60-CB3FAB32395A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{526AD85F-0123-473C-BE60-CB3FAB32395A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
