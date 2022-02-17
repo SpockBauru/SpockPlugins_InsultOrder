@@ -50,7 +50,7 @@ Press Alt+F11 do dump all textures from the current scene into `BepInEx\Plugins\
 
 Updated version of [@NnAone2cmg 's IO_ExSlider.Plugin](https://twitter.com/NnAone2cmg/status/1231587360506146817). I didn't make this plugin, just updated the syntax to BepInEx 5.4.
 
-Press Alt + M and see the magic happen! This mod lets you edit almos everything in the game! Lots of sliders, material editor, scenes objects... Please support the original creator: https://twitter.com/NnAone2cmg
+Press Alt + M and see the magic happen! This mod lets you edit almost everything in the game! Lots of sliders, material editor, scenes objects... Please support the original creator: https://twitter.com/NnAone2cmg
 
 **V0.94 - [Download](https://github.com/SpockBauru/SpockPlugins_Miconisomi/releases/tag/r7)**
 
