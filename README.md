@@ -17,10 +17,10 @@ An English version of the Insult Order launcher made to look as close as possibl
 
 **V1.0 - [Download](https://github.com/SpockBauru/SpockPlugins_Miconisomi/releases/tag/r6)**
 
-## IO_ResizeKeypad v1.0 (Insult Order)
+## IO_ResizeText v1.0 (Insult Order)
 
-Keypad in H-Scenes have weird scaling issues when translated.
-This plugin try to fix this by making the keys have a fixed size.
+Text in H-Scenes have weird scaling issues when translated.
+This plugin try to fix this by making the text have a fixed size.
 
 **V1.0 - [Download](https://github.com/SpockBauru/SpockPlugins_Miconisomi/releases/tag/r5)**
 
