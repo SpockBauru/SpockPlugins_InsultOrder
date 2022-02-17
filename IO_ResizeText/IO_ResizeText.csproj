@@ -7,11 +7,11 @@
     <ProjectGuid>{DB4C63E2-F647-4573-AAC6-F51991849A6C}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>IO_ResizeKeypad</RootNamespace>
-    <AssemblyName>IO_ResizeKeypad</AssemblyName>
-	<Description>Resize Keypad Fonts on H-Scenes</Description>
+    <RootNamespace>IO_ResizeText</RootNamespace>
+    <AssemblyName>IO_ResizeText</AssemblyName>
+    <Description>Resize Text Fonts on H-Scenes</Description>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
-	<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
     <NuGetPackageImportStamp>
@@ -75,7 +75,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IO_ResizeKeypad.cs" />
+    <Compile Include="IO_ResizeText.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

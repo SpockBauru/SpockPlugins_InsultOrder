@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IO_DisableTextScrolling", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IO_ADVLiveDump", "IO_ADVLiveDump\IO_ADVLiveDump.csproj", "{77CFAC6E-4529-4A93-B326-DB3E4615870E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IO_ResizeKeypad", "IO_ResizeKeypad\IO_ResizeKeypad.csproj", "{DB4C63E2-F647-4573-AAC6-F51991849A6C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IO_ResizeText", "IO_ResizeText\IO_ResizeText.csproj", "{DB4C63E2-F647-4573-AAC6-F51991849A6C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IO_EnglishLauncher", "IO_EnglishLauncher\IO_EnglishLauncher.csproj", "{526AD85F-0123-473C-BE60-CB3FAB32395A}"
 EndProject

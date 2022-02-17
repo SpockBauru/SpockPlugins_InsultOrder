@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // As informações gerais sobre um assembly são controladas por
 // conjunto de atributos. Altere estes valores de atributo para modificar as informações
 // associada a um assembly.
-[assembly: AssemblyTitle("IO_ResizeKeypad")]
+[assembly: AssemblyTitle("IO_ResizeText")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("IO_ResizeKeypad")]
+[assembly: AssemblyProduct("IO_ResizeText")]
 [assembly: AssemblyCopyright("Copyright ©  2022")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -32,5 +32,5 @@ using System.Runtime.InteropServices;
 // É possível especificar todos os valores ou usar como padrão os Números de Build e da Revisão
 // usando o "*" como mostrado abaixo:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion(IO_ResizeKeypad.IO_ResizeKeypad.Version)]
-[assembly: AssemblyFileVersion(IO_ResizeKeypad.IO_ResizeKeypad.Version)]
+[assembly: AssemblyVersion(IO_ResizeText.IO_ResizeText.Version)]
+[assembly: AssemblyFileVersion(IO_ResizeText.IO_ResizeText.Version)]

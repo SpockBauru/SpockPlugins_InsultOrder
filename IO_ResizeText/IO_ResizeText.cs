@@ -2,11 +2,11 @@
 using UnityEngine;
 using HarmonyLib;
 
-namespace IO_ResizeKeypad
+namespace IO_ResizeText
 {
     [BepInProcess("IO")]
-    [BepInPlugin("spockbauru.insultorder.io_resizekeypad", "IO_ResizeKeypad", Version)]
-    public class IO_ResizeKeypad : BaseUnityPlugin
+    [BepInPlugin("spockbauru.insultorder.io_resiztext", "IO_ResizeText", Version)]
+    public class IO_ResizeText : BaseUnityPlugin
     {
         // Set version in BepInEx and in AssemblyInfo
         public const string Version = "1.0";
@@ -21,10 +21,10 @@ namespace IO_ResizeKeypad
         static Vector3 pos;
         static UILabel keyText = null;
 
-        public IO_ResizeKeypad()
+        public IO_ResizeText()
         {
             // Patch Everything
-            Harmony.CreateAndPatchAll(typeof(IO_ResizeKeypad));
+            Harmony.CreateAndPatchAll(typeof(IO_ResizeText));
         }
 
         [HarmonyPostfix, HarmonyPatch(typeof(TenKeyPad), "Update")]
@@ -50,6 +50,10 @@ namespace IO_ResizeKeypad
                 //key 0 is bigger
                 currentKey = "UI Root(FH)/TenKey/TenKey_BG/In/Key/Key0/Label";
                 ResizeKey(currentKey, 30, 200, 60);
+
+                //Resizing adv textbox
+                currentKey = "UI Root(FH)/FH_StartUI/Text_Text";
+                ResizeKey(currentKey, 30, 800, 200);
             }
         }
 
