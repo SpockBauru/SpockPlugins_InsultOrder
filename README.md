@@ -22,6 +22,11 @@ Removes the mosaic censor from characters in **Insult Order**. Small footprint v
 
 **V1.1 - [Download](https://github.com/SpockBauru/SpockPlugins_Miconisomi/releases/tag/r3)**
 
+## IO_MirrorReflection
+Lets you choose the resolution of the mirror. From potato PC up to 4k! Options are available in Configuration Manager. Use anal position to see the difference. Plugin inspired by [MeidoDev's BetterMirror](https://github.com/MeidoDev/io-plugins)
+
+**V1.0 - [Download](https://github.com/SpockBauru/SpockPlugins_Miconisomi/releases/tag/r8)**
+
 ## IO_ResizeText v1.0 (Insult Order)
 
 Text in H-Scenes have weird scaling issues when translated.
@@ -53,6 +58,3 @@ Updated version of [@NnAone2cmg 's IO_ExSlider.Plugin](https://twitter.com/NnAon
 Press Alt + M and see the magic happen! This mod lets you edit almost everything in the game! Lots of sliders, material editor, scenes objects... Please support the original creator: https://twitter.com/NnAone2cmg
 
 **V0.94 - [Download](https://github.com/SpockBauru/SpockPlugins_Miconisomi/releases/tag/r7)**
-
-
-
