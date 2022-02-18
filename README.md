@@ -17,6 +17,11 @@ An English version of the Insult Order launcher made to look as close as possibl
 
 **V1.0 - [Download](https://github.com/SpockBauru/SpockPlugins_Miconisomi/releases/tag/r6)**
 
+## IO_Demosaic (Insult Order)
+Removes the mosaic censor from characters in **Insult Order**. Small footprint version.
+
+**V1.1 - [Download](https://github.com/SpockBauru/SpockPlugins_Miconisomi/releases/tag/r3)**
+
 ## IO_ResizeText v1.0 (Insult Order)
 
 Text in H-Scenes have weird scaling issues when translated.
@@ -26,14 +31,9 @@ This plugin try to fix this by making the text have a fixed size.
 
 ## IO_DisableTextScrolling (Insult Order)
 Removes the text scrolling effect in Insult Order dialog boxes, so it doesn't interfere with [Translations](https://github.com/SpockBauru/IO_Translation).
-You can disable it in Configuration Manager.
+You can enable it in Configuration Manager.
 
-**V1.0 - [Download](https://github.com/SpockBauru/SpockPlugins_Miconisomi/releases/tag/r4)**
-
-## IO_Demosaic (Insult Order)
-Removes the mosaic censor from characters in **Insult Order**. Small footprint version.
-
-**V1.1 - [Download](https://github.com/SpockBauru/SpockPlugins_Miconisomi/releases/tag/r3)**
+**V1.1 - [Download](https://github.com/SpockBauru/SpockPlugins_Miconisomi/releases/tag/r4)**
 
 ## IOTextureReplacer (Insult Order)
 
@@ -46,7 +46,7 @@ Press Alt+F11 do dump all textures from the current scene into `BepInEx\Plugins\
 
 **v0.1 - [Download](https://github.com/SpockBauru/SpockPlugins_Miconisomi/releases/tag/r2)**
 
-## BepInEx.IO_ExSlider.Plugin (Insult Order)
+## IO_ExSlider.Plugin (Insult Order)
 
 Updated version of [@NnAone2cmg 's IO_ExSlider.Plugin](https://twitter.com/NnAone2cmg/status/1231587360506146817). I didn't make this plugin, just updated the syntax to BepInEx 5.4.
 
