@@ -9,7 +9,7 @@ namespace IO_DisableTextScrolling
     public class IO_DisableTextScrolling : BaseUnityPlugin
     {
         // Set version in BepInEx and in AssemblyInfo
-        public const string Version = "1.0";
+        public const string Version = "1.1";
 
         // User Configurations
         private static ConfigEntry<bool> Enabled;
@@ -17,7 +17,7 @@ namespace IO_DisableTextScrolling
         public IO_DisableTextScrolling()
         {
             // Config Panel Settings
-            Enabled = Config.Bind("General", "Enabled", true, "Whether the plugin is enabled");
+            Enabled = Config.Bind("General", "Enabled", false, "Whether the plugin is enabled");
 
             // Patch Everything
             Harmony.CreateAndPatchAll(typeof(IO_DisableTextScrolling));
