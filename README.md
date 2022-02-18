@@ -22,7 +22,7 @@ Removes the mosaic censor from characters in **Insult Order**. Small footprint v
 
 **V1.1 - [Download](https://github.com/SpockBauru/SpockPlugins_Miconisomi/releases/tag/r3)**
 
-## IO_MirrorReflection
+## IO_MirrorResolution
 Lets you choose the resolution of the mirror. From potato PC up to 4k! Options are available in Configuration Manager. Use anal position to see the difference. Plugin inspired by [MeidoDev's BetterMirror](https://github.com/MeidoDev/io-plugins)
 
 **V1.0 - [Download](https://github.com/SpockBauru/SpockPlugins_Miconisomi/releases/tag/r8)**
