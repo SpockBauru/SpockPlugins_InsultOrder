@@ -37,7 +37,9 @@ namespace TranslateRedirectedResources
                             string[] parts = line.Split('=');
                             if (parts.Length == 2)
                             {
-                                key = parts[0];
+                                key = parts[0].Replace("\\n　", "");
+                                key = key.Replace("\\n ", "");
+                                key = key.Replace("\\n", "");
                                 value = parts[1];
                                 if (!TranslationsDictionary.ContainsKey(key))
                                     TranslationsDictionary.Add(key, value);
@@ -100,7 +102,8 @@ namespace TranslateRedirectedResources
                             while (!groupEnd)
                             {
                                 nextIndex = dumpPos + groupLenght;
-                                key = key + "\\n" + dumpedFile[nextIndex];
+                                //key = key + "\\n" + dumpedFile[nextIndex];
+                                key = key + (dumpedFile[nextIndex].TrimStart('　')).TrimStart(' ');
 
                                 //groupLenght increases until the end of consecutive valid lines
                                 groupLenght++;
