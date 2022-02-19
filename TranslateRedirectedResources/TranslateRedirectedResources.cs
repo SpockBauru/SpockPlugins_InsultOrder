@@ -72,7 +72,7 @@ namespace TranslateRedirectedResources
                     thisLine = dumpedFile[dumpPos];
                     nextLine = dumpedFile[dumpPos + 1];
 
-                    //as "i" advances, the number of remaining lines in a group of lines decreases
+                    //As "fileIndex" advances, the number of remaining lines in a group of lines decreases
                     groupLenght--;
 
                     //Check for useless lines
@@ -175,7 +175,6 @@ namespace TranslateRedirectedResources
             }
 
             //Exit dialogue
-
             Console.WriteLine("Done, press enter to exit");
             Console.ReadLine();
         }
