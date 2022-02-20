@@ -87,6 +87,7 @@ namespace TranslateRedirectedResources
                         thisLine != "スタッフＡ" &&
                         thisLine != "スタッフＢ" &&
                         thisLine != "スタッフ" &&
+                        thisLine != "兎萌の夫" &&
                         thisLine != "" &&
                         groupLenght <= 0)
                     {
@@ -171,6 +172,11 @@ namespace TranslateRedirectedResources
                         }
                     }
                 }
+
+                //Copying the last line
+                outputFile[currentIndex] = dumpedFile[dumpedFile.Length-1];
+                
+
 
                 //Finally, writing the file!
                 string filePath = outputFolder + Path.GetFileName(thisFile);
