@@ -88,6 +88,14 @@ namespace TranslateRedirectedResources
                         thisLine != "スタッフＢ" &&
                         thisLine != "スタッフ" &&
                         thisLine != "兎萌の夫" &&
+                        thisLine != "カップル・男" &&
+                        thisLine != "カップル・女" &&
+                        thisLine != "カップル女" &&
+                        thisLine != "客１" &&
+                        thisLine != "客２" &&
+                        thisLine != "客３" &&
+                        thisLine != "客４" &&
+                        thisLine != "客５" &&
                         thisLine != "" &&
                         groupLenght <= 0)
                     {
