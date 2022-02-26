@@ -9,7 +9,7 @@ namespace IO_ResizeText
     public class IO_ResizeText : BaseUnityPlugin
     {
         // Set version in BepInEx and in AssemblyInfo
-        public const string Version = "1.0";
+        public const string Version = "1.1";
 
         //Internal names of Keypad Keys
         static string[] keyNames = {"Key1", "Key2", "Key3", "Key4", "Key5", "Key6", "Key7", "Key8", "Key9",
@@ -27,12 +27,39 @@ namespace IO_ResizeText
             Harmony.CreateAndPatchAll(typeof(IO_ResizeText));
         }
 
+
+        //======================================== Hooks =================================================
+        //UI Setup at start of the scene
+        [HarmonyPostfix, HarmonyPatch(typeof(ConfigSetting), "Start")]
+        private static void ConfigStart()
+        {
+            staticInstance.Logger.LogDebug("Start Called");
+
+            //=========================== Side Menu ============================
+            //X-Ray text label
+            currentKey = "UI Root(UI)/HS_MainWind/HS_qs/HS_QS11";
+            ResizeUILabel(currentKey, 15, 45, 20);
+
+            //Clear Semen text label
+            currentKey = "UI Root(UI)/HS_MainWind/HS_qs/HS_QS09";
+            ResizeUILabel(currentKey, 15, 52, 20);
+
+            //Obstructions text label
+            currentKey = "UI Root(UI)/HS_MainWind/HS_qs/HS_QS02";
+            ResizeUILabel(currentKey, 15, 60, 20);
+
+            //Show FPS text label
+            currentKey = "UI Root(UI)/HS_MainWind/HS_qs/HS_QS03";
+            ResizeUILabel(currentKey, 15, 50, 20);
+        }
+
+        //Keypad in H-Scenes
         [HarmonyPostfix, HarmonyPatch(typeof(TenKeyPad), "Update")]
         private static void RepeatResize()
         {
-            //Repeating every second because bugs, my bad...
+            //Repeating every half second because bugs, my bad...
             counter += Time.deltaTime;
-            if (counter > 1f)
+            if (counter >= 0.5f)
             {
                 counter = 0f;
 
@@ -40,24 +67,28 @@ namespace IO_ResizeText
                 for (int i = 0; i < keyNames.Length; i++)
                 {
                     currentKey = "UI Root(FH)/TenKey/TenKey_BG/In/Key/" + keyNames[i] + "/Label";
-                    ResizeKey(currentKey, 30, 110, 60);
+                    ResizeUILabel(currentKey, 30, 110, 60);
                 }
 
                 //key minus have a special box, because miconisomi
                 currentKey = "UI Root(FH)/TenKey/TenKey_BG/In/Key/Key_Minus/Label";
-                ResizeKey(currentKey, 30, 110, 40);
+                ResizeUILabel(currentKey, 30, 110, 40);
 
                 //key 0 is bigger
                 currentKey = "UI Root(FH)/TenKey/TenKey_BG/In/Key/Key0/Label";
-                ResizeKey(currentKey, 30, 200, 60);
+                ResizeUILabel(currentKey, 30, 200, 60);
 
                 //Resizing adv textbox
                 currentKey = "UI Root(FH)/FH_StartUI/Text_Text";
-                ResizeKey(currentKey, 30, 800, 200);
+                ResizeUILabel(currentKey, 30, 800, 200);
             }
         }
 
-        private static void ResizeKey(string currentKey, int fontSize, int boxWidth, int boxHeight)
+        static IO_ResizeText staticInstance = new IO_ResizeText();
+
+        //====================================== Methods ============================================
+        //Game's own UILabel
+        private static void ResizeUILabel(string currentKey, int fontSize, int boxWidth, int boxHeight)
         {
             key = GameObject.Find(currentKey);
 
