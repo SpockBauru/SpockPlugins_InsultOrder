@@ -29,12 +29,11 @@ namespace IO_ResizeText
 
 
         //======================================== Hooks =================================================
+
         //UI Setup at start of the scene
         [HarmonyPostfix, HarmonyPatch(typeof(ConfigSetting), "Start")]
         private static void ConfigStart()
         {
-            staticInstance.Logger.LogDebug("Start Called");
-
             //=========================== Side Menu ============================
             //X-Ray text label
             currentKey = "UI Root(UI)/HS_MainWind/HS_qs/HS_QS11";
@@ -83,8 +82,6 @@ namespace IO_ResizeText
                 ResizeUILabel(currentKey, 30, 800, 200);
             }
         }
-
-        static IO_ResizeText staticInstance = new IO_ResizeText();
 
         //====================================== Methods ============================================
         //Game's own UILabel
