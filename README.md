@@ -24,12 +24,12 @@ Lets you choose the resolution of the mirror. From potato PC up to 4k! Options a
 
 **V1.0 - [Download](https://github.com/SpockBauru/SpockPlugins_Miconisomi/releases/tag/r8)**
 
-## IO_ResizeText v1.0 (Insult Order)
+## IO_ResizeText (Insult Order)
 
 Text in H-Scenes have weird scaling issues when [Translated](https://github.com/SpockBauru/IO_Translation).
 This plugin try to fix this by making the text have a fixed size.
 
-**V1.0 - [Download](https://github.com/SpockBauru/SpockPlugins_Miconisomi/releases/tag/r5)**
+**V1.1 - [Download](https://github.com/SpockBauru/SpockPlugins_Miconisomi/releases/tag/r5)**
 
 ## IO_DisableTextScrolling (Insult Order)
 Removes the text scrolling effect in Insult Order dialog boxes, so it doesn't interfere with [Translations](https://github.com/SpockBauru/IO_Translation).
