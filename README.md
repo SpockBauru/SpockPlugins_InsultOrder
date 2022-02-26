@@ -19,7 +19,7 @@ Removes the mosaic censor from characters in **Insult Order**. Small footprint v
 
 **V1.1 - [Download](https://github.com/SpockBauru/SpockPlugins_Miconisomi/releases/tag/r3)**
 
-## IO_MirrorResolution
+## IO_MirrorResolution (Insult Order)
 Lets you choose the resolution of the mirror. From potato PC up to 4k! Options are available in Configuration Manager. Use anal position to see the difference. Plugin inspired by [MeidoDev's BetterMirror](https://github.com/MeidoDev/io-plugins)
 
 **V1.0 - [Download](https://github.com/SpockBauru/SpockPlugins_Miconisomi/releases/tag/r8)**
@@ -29,7 +29,7 @@ Lets you choose the resolution of the mirror. From potato PC up to 4k! Options a
 Text in H-Scenes have weird scaling issues when [Translated](https://github.com/SpockBauru/IO_Translation).
 This plugin try to fix this by making the text have a fixed size.
 
-**V1.1 - [Download](https://github.com/SpockBauru/SpockPlugins_Miconisomi/releases/tag/r5)**
+**V1.1.1 - [Download](https://github.com/SpockBauru/SpockPlugins_Miconisomi/releases/tag/r5)**
 
 ## IO_DisableTextScrolling (Insult Order)
 Removes the text scrolling effect in Insult Order dialog boxes, so it doesn't interfere with [Translations](https://github.com/SpockBauru/IO_Translation).
