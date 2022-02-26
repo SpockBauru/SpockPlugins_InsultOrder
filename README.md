@@ -8,9 +8,6 @@ Plugins for Miconisomi games
 2. Install the [Configuration Manager](https://github.com/BepInEx/BepInEx.ConfigurationManager/releases)
 3. Extract the plugin .zip file to your game folder
 
-**Installation**:
-Extract the .zip file to your game folder
-
 ## IO_EnglishLauncher (Insult Order)
 
 An English version of the Insult Order launcher made to look as close as possible to the original.
