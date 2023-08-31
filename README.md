@@ -32,8 +32,8 @@ This plugin try to fix this by making the text have a fixed size.
 **V1.1.1 - [Download](https://github.com/SpockBauru/SpockPlugins_Miconisomi/releases/tag/r5)**
 
 ## IO_DisableTextScrolling (Insult Order)
-Removes the text scrolling effect in Insult Order dialog boxes, so it doesn't interfere with [Translations](https://github.com/SpockBauru/IO_Translation).
-You can enable it in Configuration Manager.
+Completely removes the text scrolling effect in Insult Order dialog boxes.
+If you don't like scrolling effect, enable this plugin in the Configuration Manager (Open with F12).
 
 **V1.1 - [Download](https://github.com/SpockBauru/SpockPlugins_Miconisomi/releases/tag/r4)**
 
