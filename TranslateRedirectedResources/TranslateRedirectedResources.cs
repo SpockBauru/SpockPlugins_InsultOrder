@@ -96,6 +96,9 @@ namespace TranslateRedirectedResources
                         thisLine != "客３" &&
                         thisLine != "客４" &&
                         thisLine != "客５" &&
+                        thisLine != "男１" &&
+                        thisLine != "男２" &&
+                        thisLine != "男３" &&
                         thisLine != "" &&
                         groupLenght <= 0)
                     {
@@ -104,7 +107,7 @@ namespace TranslateRedirectedResources
 
                         // Treating Group of Lines
                         // Making the key the same as translated file, and also defining the lenght of the group of lines
-                        if (thisLine != "" && nextLine != "")
+                        if (thisLine != "" && nextLine != "" && !nextLine.Contains("//"))
                         {
                             groupLenght = 1;
                             bool groupEnd = false;
