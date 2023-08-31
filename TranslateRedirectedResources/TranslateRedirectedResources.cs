@@ -79,7 +79,7 @@ namespace TranslateRedirectedResources
 
                     //Check for useless lines
                     if (!thisLine.Contains("CH") &&
-                        !thisLine.StartsWith("***") &&
+                        !thisLine.TrimStart().StartsWith("***") &&
                         !thisLine.Contains("//") &&
                         thisLine != "主人公" &&
                         thisLine != "音瑚" &&
