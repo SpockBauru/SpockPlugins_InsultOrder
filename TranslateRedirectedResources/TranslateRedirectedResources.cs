@@ -118,7 +118,7 @@ namespace TranslateRedirectedResources
                                 groupLenght++;
 
                                 nextIndex = dumpPos + groupLenght;
-                                if (dumpedFile[nextIndex] == "")
+                                if (dumpedFile[nextIndex] == "" || dumpedFile[nextIndex].StartsWith("//"))
                                     groupEnd = true;
                             }
                         }
