@@ -21,13 +21,16 @@ using System.Text.RegularExpressions;
 
 namespace BepInEx.IO_ExSlider.Plugin
 {
-    [BepInPlugin("jp.nn.BepInEx.IO_ExSlider.Plugin", "BepInEx.IO_ExSlider.Plugin", "1.0")]
+    [BepInPlugin("jp.nn.BepInEx.IO_ExSlider.Plugin", "BepInEx.IO_ExSlider.Plugin", Version)]
     public partial class IO_ExSlider : BaseUnityPlugin
     {
         public static IO_ExSlider _Instance;
 
-        public readonly static string PLUGIN_CAPTION = "    IO ExSlider";
-        public readonly static string PLUGIN_VERSION = "0.94 (Preview)";
+        public const string Version = "0.94.1";
+        
+        public static readonly string PLUGIN_CAPTION = "    IO ExSlider";
+        public static readonly string PLUGIN_VERSION = Version + " (Preview)";
+
         private const int WINID_COFIG = 79831;
 
         //保存先

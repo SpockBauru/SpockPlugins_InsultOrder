@@ -1,5 +1,4 @@
 ﻿using System.Reflection;
-using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using static IO_Demosaic.IO_Demosaic;
 
@@ -7,13 +6,10 @@ using static IO_Demosaic.IO_Demosaic;
 // conjunto de atributos. Altere estes valores de atributo para modificar as informações
 // associada a um assembly.
 [assembly: AssemblyTitle("IO_Demosaic")]
-[assembly: AssemblyDescription("")]
-[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyDescription("Removes mosaics, partially uncensoring the game")]
 [assembly: AssemblyCompany("https://github.com/SpockBauru/SpockPlugins_Miconisomi")]
 [assembly: AssemblyProduct("IO_Demosaic")]
 [assembly: AssemblyCopyright("Copyright ©  2022")]
-[assembly: AssemblyTrademark("")]
-[assembly: AssemblyCulture("")]
 
 // Definir ComVisible como false torna os tipos neste assembly invisíveis
 // para componentes COM. Caso precise acessar um tipo neste assembly de
