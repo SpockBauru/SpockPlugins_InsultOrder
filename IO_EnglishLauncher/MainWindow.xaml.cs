@@ -176,6 +176,20 @@ namespace IO_EnglishLauncher
 
 		private void ManualBt_Click(object sender, RoutedEventArgs e)
 		{
+            string manualPath = Path.Combine(Environment.CurrentDirectory, "manual\\manual_en.html");
+            if (File.Exists(manualPath))
+            {
+                Process.Start(manualPath);
+                return;
+            }
+
+            manualPath = Path.Combine(Environment.CurrentDirectory, "manual\\manual_ja.html");
+            if (File.Exists(manualPath))
+            {
+                Process.Start(manualPath);
+                return;
+            }
+
 			Process.Start("http://miconisomi.xii.jp/io/manual/index.html");
 		}
 
