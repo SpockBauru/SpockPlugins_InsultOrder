@@ -1193,27 +1193,7 @@ namespace BepInEx.IO_ExSlider.Plugin
 
         public static string resolveSavePath(string fname)
         {
-            string path;
-            string s = BepInEx.Paths.PluginPath;
-            //string s = System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-
-
-            if (s.ToLower().Contains(@"bepinex"))
-            {
-                path = s + @"\Config\" + fname;
-            }
-            else if (s.ToLower().Contains(@"sybaris\unityinjector"))
-            {
-                path = s + @"\Config\" + fname;
-            }
-            else if (s.ToLower().Contains(@"patches\unityinjector"))
-            {
-                path = s + @"\Config\" + fname;
-            }
-            else
-            {
-                path = @"UnityInjector\Config\" + fname;
-            }
+            var path = Path.Combine(Paths.ConfigPath, fname);
 
 #if !USING_XML
             fileXml_ = path.Replace(".xml", ".json");
