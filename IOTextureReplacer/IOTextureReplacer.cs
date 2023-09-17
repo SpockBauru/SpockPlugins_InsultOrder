@@ -4,43 +4,45 @@ using System.IO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using BepInEx;
+using BepInEx.Configuration;
 using BepInEx.Logging;
 
 
 namespace IOTextureReplacer
 {
-    [BepInPlugin(GUID: "IOTextureReplacer", Name: "RipeDurian.InsultOrder.IOTextureReplacer", Version: "0.1")]
+    [BepInPlugin(GUID: "IOTextureReplacer", Name: "RipeDurian.InsultOrder.IOTextureReplacer", Version: Version)]
     public class IOTextureReplacer : BaseUnityPlugin
     {
-        public string imagesPath { get; set; }
-        public string imagesDumpPath { get; set; }
+        public const string Version = "0.1.1";
+
+        public string imagesPath { get; set; } = @"BepInEx/Plugins/IOTextureReplacer/images";
+        public string imagesDumpPath { get; set; } = @"BepInEx/Plugins/IOTextureReplacer/imageDump";
+
         private Dictionary<string, string> images;
+        private ConfigEntry<KeyboardShortcut> _dumpHotkey;
 
         public void Start()
         {
+            _dumpHotkey = Config.Bind("Hotkeys", "Dump images", new KeyboardShortcut(KeyCode.F11, KeyCode.RightAlt), "Save all images present in the current scene inside " + imagesDumpPath);
+
             SceneManager.sceneLoaded += OnLevelFinishedLoading;
 
-            imagesPath = @"BepInEx/Plugins/IOTextureReplacer/images";
-            imagesDumpPath = @"BepInEx/Plugins/IOTextureReplacer/imageDump";
             getImages();
             replaceImages();
         }
 
         public void OnGUI()
         {
-            if (UnityEngine.Event.current.type == EventType.KeyUp)//Event.current.isKey && Event.current.type)
+            if (_dumpHotkey.Value.IsUp())
             {
-                if (UnityEngine.Event.current.keyCode == KeyCode.F11 && UnityEngine.Event.current.alt)
+                Logger.Log(LogLevel.Debug, "Dumping Images..." + Environment.NewLine);
+                try
                 {
-                    Logger.Log(LogLevel.Debug, "Dumping Images..." + Environment.NewLine);
-                    try
-                    {
-                        DumpImagesFromScene();
-                    }
-                    catch (Exception ex)
-                    {
-                        Logger.Log(LogLevel.Error, ex.ToString());
-                    }
+                    DumpImagesFromScene();
+                }
+                catch (Exception ex)
+                {
+                    Logger.Log(LogLevel.Error, ex.ToString());
                 }
             }
         }
