@@ -251,7 +251,7 @@ namespace IO_EnglishLauncher
         {
             new Process
             {
-                StartInfo = new ProcessStartInfo("はじめにお読みください.txt")
+                StartInfo = new ProcessStartInfo(File.Exists("Readme.txt") ? "Readme.txt" : "はじめにお読みください.txt")
             }.Start();
         }
 
