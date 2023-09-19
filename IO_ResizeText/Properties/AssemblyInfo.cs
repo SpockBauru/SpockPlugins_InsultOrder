@@ -6,9 +6,8 @@ using System.Runtime.InteropServices;
 // conjunto de atributos. Altere estes valores de atributo para modificar as informações
 // associada a um assembly.
 [assembly: AssemblyTitle("IO_ResizeText")]
-[assembly: AssemblyDescription("")]
-[assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyDescription("Fix scaling issues of translated text in H-Scenes")]
+[assembly: AssemblyCompany("https://github.com/SpockBauru/SpockPlugins_Miconisomi")]
 [assembly: AssemblyProduct("IO_ResizeText")]
 [assembly: AssemblyCopyright("Copyright ©  2022")]
 [assembly: AssemblyTrademark("")]

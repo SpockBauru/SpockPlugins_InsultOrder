@@ -7,13 +7,10 @@ using static IO_DisableTextScrolling.IO_DisableTextScrolling;
 // conjunto de atributos. Altere estes valores de atributo para modificar as informações
 // associada a um assembly.
 [assembly: AssemblyTitle("IO_DisableTextScrolling")]
-[assembly: AssemblyDescription("")]
-[assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyDescription("Adds option to completely remove text scrolling effect in dialog boxes")]
+[assembly: AssemblyCompany("https://github.com/SpockBauru/SpockPlugins_Miconisomi")]
 [assembly: AssemblyProduct("IO_DisableTextScrolling")]
 [assembly: AssemblyCopyright("Copyright ©  2022")]
-[assembly: AssemblyTrademark("")]
-[assembly: AssemblyCulture("")]
 
 // Definir ComVisible como false torna os tipos neste assembly invisíveis
 // para componentes COM. Caso precise acessar um tipo neste assembly de

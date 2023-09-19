@@ -7,13 +7,10 @@ using static IO_ADVLiveDump.IO_ADVLiveDump;
 // conjunto de atributos. Altere estes valores de atributo para modificar as informações
 // associada a um assembly.
 [assembly: AssemblyTitle("IO_ADVLiveDump")]
-[assembly: AssemblyDescription("")]
-[assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyDescription("Tool for translators")]
+[assembly: AssemblyCompany("https://github.com/SpockBauru/SpockPlugins_Miconisomi")]
 [assembly: AssemblyProduct("IO_ADVLiveDump")]
 [assembly: AssemblyCopyright("Copyright ©  2022")]
-[assembly: AssemblyTrademark("")]
-[assembly: AssemblyCulture("")]
 
 // Definir ComVisible como false torna os tipos neste assembly invisíveis
 // para componentes COM. Caso precise acessar um tipo neste assembly de

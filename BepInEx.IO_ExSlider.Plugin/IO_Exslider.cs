@@ -18,16 +18,20 @@ using static BepInEx.IO_ExSlider.Plugin.TargetIni;
 using Hook.nnPlugin.Managed;
 using BepInEx.IO_ExSlider.Plugin;
 using System.Text.RegularExpressions;
+using BepInEx.Configuration;
 
 namespace BepInEx.IO_ExSlider.Plugin
 {
-    [BepInPlugin("jp.nn.BepInEx.IO_ExSlider.Plugin", "BepInEx.IO_ExSlider.Plugin", "1.0")]
+    [BepInPlugin("jp.nn.BepInEx.IO_ExSlider.Plugin", "IO_ExSlider", Version)]
     public partial class IO_ExSlider : BaseUnityPlugin
     {
         public static IO_ExSlider _Instance;
 
-        public readonly static string PLUGIN_CAPTION = "    IO ExSlider";
-        public readonly static string PLUGIN_VERSION = "0.94 (Preview)";
+        public const string Version = "0.94.1";
+
+        public static readonly string PLUGIN_CAPTION = "    IO ExSlider";
+        public static readonly string PLUGIN_VERSION = Version + " (Preview)";
+
         private const int WINID_COFIG = 79831;
 
         //保存先
@@ -35,7 +39,7 @@ namespace BepInEx.IO_ExSlider.Plugin
 
         static List<GirlCtrl> ctrlGirls = new List<GirlCtrl>();
         static List<GirlCtrl> ctrlGirls_Targeted { get { return ctrlGirls.FindAll(s => s.isCtrlTargeted); } }
-        public static List<GirlCtrl> CtrlGirlsInst => ctrlGirls; 
+        public static List<GirlCtrl> CtrlGirlsInst => ctrlGirls;
 
         public static OhMyGizmo gizmoRot;
         public static bool FlagUsaFH = false;
@@ -81,7 +85,7 @@ namespace BepInEx.IO_ExSlider.Plugin
                 if (!find)
                     return FindModel();
 
-                return _objModel = Extentions.FindSp(ini.getFullPath(ini.modelRoot), NeedRetry:true);
+                return _objModel = Extentions.FindSp(ini.getFullPath(ini.modelRoot), NeedRetry: true);
             }
 
             public GameObject FindModel()
@@ -209,7 +213,7 @@ namespace BepInEx.IO_ExSlider.Plugin
                 }
 
                 // パーティクルUpdate後処理
-                fixParticles.Update_3post(); 
+                fixParticles.Update_3post();
             }
 
             public void OnNewSceneLoaded()
@@ -407,10 +411,14 @@ namespace BepInEx.IO_ExSlider.Plugin
             }
         }
 
+        private ConfigEntry<KeyboardShortcut> _hotkey;
+
         void Awake()
         {
             _Instance = this;
             GameObject.DontDestroyOnLoad(this);
+
+            _hotkey = Config.Bind("Hotkeys", "Open ExSlider menu", new KeyboardShortcut(KeyCode.M, KeyCode.LeftAlt));
 
             // for Bepinex
             MyHook.InstallHooks();
@@ -486,10 +494,10 @@ namespace BepInEx.IO_ExSlider.Plugin
         private void Update()
         {
             // キーチェック
-            if (InputEx.GetKeyDownEx(cfg.Hotkey, InputEx.ModifierKey.Control | InputEx.ModifierKey.Alt | InputEx.ModifierKey.Shift))
+            if (_hotkey.Value.IsDown())
             {   //プラグイン　オン/オフ
                 _PluginEnabled = !_PluginEnabled;
-                Debug.LogWarning(PLUGIN_CAPTION + "の有効状態が変更されました: " + _PluginEnabled);
+                Logger.LogWarning(PLUGIN_CAPTION + "の有効状態が変更されました: " + _PluginEnabled);
 
                 if (!_PluginEnabled)
                 {
@@ -530,7 +538,7 @@ namespace BepInEx.IO_ExSlider.Plugin
                     {
                         if (!GameClass.FreeMode)
                         {
-                            Debug.Log("FreeMode ON");
+                            Logger.LogDebug("FreeMode ON");
                             GameClass.FreeMode = true;
                             HsysMgr.FreeDbgFlag = true; //20200712fix
                         }
@@ -539,7 +547,7 @@ namespace BepInEx.IO_ExSlider.Plugin
                     //else if (GameClass.FreeMode)
                     else if (GameClass.FreeMode && HsysMgr.FreeDbgFlag)
                     {
-                        Debug.Log("FreeMode OFF");
+                        Logger.LogDebug("FreeMode OFF");
                         GameClass.FreeMode = false;
                         HsysMgr.FreeDbgFlag = false; //20200712fix
                     }
@@ -552,7 +560,7 @@ namespace BepInEx.IO_ExSlider.Plugin
                     prevFadeState = FadeManager_GUI.FadeStart2;
                     if (FadeManager_GUI.FadeStart2)
                     {
-                        Debug.Log("Fade in");
+                        Logger.LogDebug("Fade in");
 
                         // シーンを抜ける前の処理
                         if (HsysMgr.Config.DebugTopToFreeMode && SaveLoad_Game.Data.savegamedata.DebugModeShortCut
@@ -561,7 +569,7 @@ namespace BepInEx.IO_ExSlider.Plugin
                             // 間に合わないことがある？
                             GameClass.FreeMode = true;
                             HsysMgr.FreeDbgFlag = true; //20200712fix
-                            Debug.Log("FreeMode ON-1");
+                            Logger.LogDebug("FreeMode ON-1");
                         }
 
                         if (HsysMgr.Config.UseFree3P && (act.name == "Title"))// カスタムだと片方のモーションしか取れない問題あり || act.name == "Custom"))
@@ -594,14 +602,14 @@ namespace BepInEx.IO_ExSlider.Plugin
                     else
                     {
                         // Unload完了後(まだフェード中)
-                        Debug.Log("Fade out 2");
+                        Logger.LogDebug("Fade out 2");
                         //if (HsysMgr.Config.UseFree3P)
                         //{
                         //    Free3P.MotionAndVoices.Setup();
                         //}
 
                         // シーン位置解除
-                        ctrlGirls.ForEach( x =>
+                        ctrlGirls.ForEach(x =>
                         {
                             x.scnPos.enable = false;
                         });
@@ -635,12 +643,12 @@ namespace BepInEx.IO_ExSlider.Plugin
                 //    var async = FadeManager_GUI.Instance.GetNonPublicField<AsyncOperation>("async");
                 //    //if (async != null && !async.isDone)
                 //    //{
-                //    //    Debug.Log("async.progress "+ async.progress);
-                //    //    Debug.Log("async.isDone " + async.isDone);
+                //    //    Logger.LogDebug("async.progress "+ async.progress);
+                //    //    Logger.LogDebug("async.isDone " + async.isDone);
                 //    //}
                 //    if (async != null && !async.allowSceneActivation)
                 //    {
-                //        Debug.Log("allowSceneActivationをTrueに変更");
+                //        Logger.LogDebug("allowSceneActivationをTrueに変更");
                 //        async.allowSceneActivation = true;
                 //    }
                 //}
@@ -657,7 +665,7 @@ namespace BepInEx.IO_ExSlider.Plugin
                 if (act != actScene && act != null && act.isLoaded)
                 {
                     // シーン変更検出
-                    Debug.Log("-> Scene: " + act.name);
+                    Logger.LogDebug("-> Scene: " + act.name);
                     actScene = act;
 
                     CameraFovDefValueThisScene = ConfigClass.Fov;
@@ -708,13 +716,14 @@ namespace BepInEx.IO_ExSlider.Plugin
                     {
                         // ウサ子Hシーン　ボーン名が変化
                         FlagUsaFH = true;
-                        Debug.Log("Usa FHシーン");
+                        Logger.LogDebug("Usa FHシーン");
                     }
 
-                    ctrlGirls_Targeted.ForEach(x => {
-                            FlagNowTgtID = x.ini.id;
-                            x.OnNewSceneLoaded();
-                        });
+                    ctrlGirls_Targeted.ForEach(x =>
+                    {
+                        FlagNowTgtID = x.ini.id;
+                        x.OnNewSceneLoaded();
+                    });
 
                     // ゲーム設定
                     SetSysCnfQuality(cfg.QualitySetting);
@@ -731,7 +740,7 @@ namespace BepInEx.IO_ExSlider.Plugin
                 if (Free3P.FlagStart)// && FadeManager_GUI.FadeStart && !FadeManager_GUI.FadeStart2)
                 {
                     // 次シーンローディング中
-                    if (!FadeManager_GUI.FadeStart2 && !FadeManager_GUI.Instance.LoadingRogo.activeSelf) 
+                    if (!FadeManager_GUI.FadeStart2 && !FadeManager_GUI.Instance.LoadingRogo.activeSelf)
                         Free3P.PreStart(MyHook.NextSceneName);
 
                     //if (!FadeManager_GUI.FadeStart2 && !FadeManager_GUI.Instance.LoadingRogo.activeSelf) // ローディングから地続きで入れるけど体感が長い
@@ -741,7 +750,7 @@ namespace BepInEx.IO_ExSlider.Plugin
                         if (SceneManager.GetActiveScene() != null &&
                             SceneManager.GetActiveScene().name == MyHook.NextSceneName)
                         {
-                            Debug.Log("Free3P Start");
+                            Logger.LogDebug("Free3P Start");
                             var scnName = MyHook.NextSceneName;
                             Free3P.Start(scnName);
                         }
@@ -753,7 +762,7 @@ namespace BepInEx.IO_ExSlider.Plugin
             }
             catch (Exception e)
             {
-                Debug.LogError("Update: " + updateLvl + "\r\n" + e);
+                Logger.LogError("Update: " + updateLvl + "\r\n" + e);
             }
         }
 
@@ -764,7 +773,7 @@ namespace BepInEx.IO_ExSlider.Plugin
         private void Update2()
         {
             // キーチェック
-            if (InputEx.GetKeyDownEx(cfg.Hotkey, cfg.Modfkey))
+            if (_hotkey.Value.IsDown())
             {   //プラグイン　オン/オフ
                 //GUIの切り替え
                 GuiFlag = !GuiFlag;
@@ -863,14 +872,15 @@ namespace BepInEx.IO_ExSlider.Plugin
                     }
                 }
             }
-            
+
             upLog("-1");
 
             // キャラクター
-            ctrlGirls_Targeted.ForEach(x => {
-                    FlagNowTgtID = x.ini.id;
-                    x.OnUpdate();
-                });
+            ctrlGirls_Targeted.ForEach(x =>
+            {
+                FlagNowTgtID = x.ini.id;
+                x.OnUpdate();
+            });
 
             //if (Time.frameCount % 21 == 0) //時々更新、シーン遷移以外は基本書き換え不要
             if (Time.frameCount % 2 == 0) // ICとかは頻度上げる必要ありそう
@@ -889,10 +899,11 @@ namespace BepInEx.IO_ExSlider.Plugin
         private void PostUpdate()
         {
             // キャラクター
-            ctrlGirls_Targeted.ForEach(x => {
-                    FlagNowTgtID = x.ini.id;
-                    x.OnPostUpdate();
-                });
+            ctrlGirls_Targeted.ForEach(x =>
+            {
+                FlagNowTgtID = x.ini.id;
+                x.OnPostUpdate();
+            });
 
             // エフェクト
             EffectMgr.OnUpdate();
@@ -1013,9 +1024,6 @@ namespace BepInEx.IO_ExSlider.Plugin
         [Serializable]
         public class xmlinfo
         {
-            public KeyCode Hotkey = KeyCode.M;
-            public InputEx.ModifierKey Modfkey = InputEx.ModifierKey.Alt;
-
             public KeyValuePair<string, string[]>[] PresetSlotnames = new KeyValuePair<string, string[]>[]
                 {
                 };
@@ -1038,7 +1046,8 @@ namespace BepInEx.IO_ExSlider.Plugin
             // プラグイン設定
             public int QualitySetting = -1;
 
-            public bool EnableMensPosectrl {
+            public bool EnableMensPosectrl
+            {
                 get => _EnableMensPosectrl;
                 set
                 {
@@ -1058,7 +1067,7 @@ namespace BepInEx.IO_ExSlider.Plugin
                                 g.rcbFullbody = value ? g.ctrlBone.addCtrl<CtrlBone.RotctrlBone>() : null;
                             }
                         }
-                    } 
+                    }
                 }
             }
             bool _EnableMensPosectrl = true;
@@ -1085,7 +1094,7 @@ namespace BepInEx.IO_ExSlider.Plugin
 
             // ボーン系
             //public SaveEdits edits = new SaveEdits();
-            public BoneScales.Edits[] boneScales = new BoneScales.Edits[] {  };
+            public BoneScales.Edits[] boneScales = new BoneScales.Edits[] { };
             public bool CharEdits_PosOfsByScene_PlusBGName = false;
 
             // 視線追従 → girlCtrlsに
@@ -1130,7 +1139,7 @@ namespace BepInEx.IO_ExSlider.Plugin
 
 
             // Hシーン
-            public float HsysYoinTimeIC            
+            public float HsysYoinTimeIC
             {
                 get { return MyHook.yoinTimeIC; }
                 set { MyHook.yoinTimeIC = value; }
@@ -1181,29 +1190,10 @@ namespace BepInEx.IO_ExSlider.Plugin
         static int saveToFileNum = 1;
 
         static string fileXml_ = null;
+
         public static string resolveSavePath(string fname)
         {
-            string path;
-            string s = BepInEx.Paths.PluginPath;
-            //string s = System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-
-
-            if (s.ToLower().Contains(@"bepinex"))
-            {
-                path = s + @"\Config\" + fname;
-            }
-            else if (s.ToLower().Contains(@"sybaris\unityinjector"))
-            {
-                path = s + @"\Config\" + fname;
-            }
-            else if (s.ToLower().Contains(@"patches\unityinjector"))
-            {
-                path = s + @"\Config\" + fname;
-            }
-            else
-            {
-                path = @"UnityInjector\Config\" + fname;
-            }
+            var path = Path.Combine(Paths.ConfigPath, fname);
 
 #if !USING_XML
             fileXml_ = path.Replace(".xml", ".json");
@@ -1282,7 +1272,7 @@ namespace BepInEx.IO_ExSlider.Plugin
                     }
                     catch (Exception e)
                     {
-                        UnityEngine.Debug.Log("Plg_XML_Write Error:" + e);
+                        _Instance.Logger.LogDebug("Plg_XML_Write Error:" + e);
                     }
                 }
                 else if (System.IO.File.Exists(fileXml))
@@ -1306,7 +1296,7 @@ namespace BepInEx.IO_ExSlider.Plugin
             }
             catch (Exception e)
             {
-                UnityEngine.Debug.Log("Plg_XML_Load Error:" + e);
+                _Instance.Logger.LogDebug("Plg_XML_Load Error:" + e);
                 objOtXML = new xmlinfo(); //リセット
             }
 
@@ -1450,13 +1440,13 @@ namespace BepInEx.IO_ExSlider.Plugin
                 }
                 catch (Exception e)
                 {
-                    UnityEngine.Debug.Log("Plg_XML_Write Error:" + e);
+                    _Instance.Logger.LogDebug("Plg_XML_Write Error:" + e);
                 }
 
             }
             catch (Exception e)
             {
-                UnityEngine.Debug.Log("Plg_XML_Save Error:" + e);
+                _Instance.Logger.LogDebug("Plg_XML_Save Error:" + e);
             }
 
             return true;
@@ -1541,14 +1531,14 @@ namespace BepInEx.IO_ExSlider.Plugin
                     //ファイルを閉じる
                     sw.Close();
 
-                    Debug.Log("Save完了: " + fname);
+                    _Instance.Logger.LogDebug("Save完了: " + fname);
                 }
                 catch (Exception e)
                 {
                     if (sw != null)
                         sw.Close();
 
-                    UnityEngine.Debug.Log("Ktm_XML_Save Error:" + e);
+                    _Instance.Logger.LogDebug("Ktm_XML_Save Error:" + e);
                     return false;
                 }
 
@@ -1592,7 +1582,7 @@ namespace BepInEx.IO_ExSlider.Plugin
                         sr.Close();
                         sr = null;
 
-                        Debug.Log("Load完了: " + fname);
+                        _Instance.Logger.LogDebug("Load完了: " + fname);
                     }
                 }
                 catch (Exception e)
@@ -1600,7 +1590,7 @@ namespace BepInEx.IO_ExSlider.Plugin
                     if (sr != null)
                         sr.Close();
 
-                    UnityEngine.Debug.Log("Ktm_XML_Load Error:" + e);
+                    _Instance.Logger.LogDebug("Ktm_XML_Load Error:" + e);
                     return false;
                 }
                 return true;
@@ -1831,7 +1821,7 @@ public static class Extentions
     {
         int count = 0;
 
-        for(int i = 0; i < str.Length; i += 1)
+        for (int i = 0; i < str.Length; i += 1)
         {
             i = str.IndexOf(c, i);
             if (i < 0)
@@ -1893,7 +1883,8 @@ public static class Extentions
     public static void TransNameUsaBonesFH(ref string name)
     {
         //if (BepInEx.IO_ExSlider.Plugin.IO_ExSlider.FlagUsaFH)
-        if (IO_ExSlider.FlagNowTgtID == "Usa") {
+        if (IO_ExSlider.FlagNowTgtID == "Usa")
+        {
             //Console.Write(name);
 
             TransNameUsaBonesFH_AniEar(ref name);
@@ -1912,9 +1903,9 @@ public static class Extentions
     {
         var names = path.Split('/');
 
-        for(int i=0; i<names.Length; i++)
+        for (int i = 0; i < names.Length; i++)
         {
-            names[i] = TransNameUsaBonesFH_Name(names[i]);   
+            names[i] = TransNameUsaBonesFH_Name(names[i]);
         }
 
         path = string.Join("/", names);
@@ -2071,7 +2062,7 @@ public static class Extentions
             dicFindDeepSp[key] = tr.transform;
 
         return tr ? tr.transform : null;
-    }   
+    }
 
     static Dictionary<string, GameObject> dicGameObject_FindSp = new Dictionary<string, GameObject>();
 
@@ -2097,7 +2088,7 @@ public static class Extentions
                     return null;
             }
         }
-        else if (!hit || NeedRetry || (UnityEngine.Random.Range(0,10) < 2))//Time.frameCount % 5 == 1) // 初回以外は5回に1度再チャレンジ
+        else if (!hit || NeedRetry || (UnityEngine.Random.Range(0, 10) < 2))//Time.frameCount % 5 == 1) // 初回以外は5回に1度再チャレンジ
         {
             go = GameObject.Find(name);
             if (!hit || go)
@@ -2169,7 +2160,7 @@ namespace Hook.nnPlugin.Managed
         public static bool UnHookMecanim = false;
         public static bool UnHookAnimator = false;
         static bool onHook = false;
-        
+
         // ステータス
         public static float yoinX = 1f;
         public static float yoinTimeIC = 0f;
@@ -2245,7 +2236,7 @@ namespace Hook.nnPlugin.Managed
                 //クラス名
                 className = callerFrame.GetMethod().ReflectedType.FullName;
 
-                Console.WriteLine( "  呼び出し元-3：" + className + " / " + methodName + " / " + key);
+                Console.WriteLine("  呼び出し元-3：" + className + " / " + methodName + " / " + key);
             }
             catch (Exception e)
             {
@@ -2278,7 +2269,7 @@ namespace Hook.nnPlugin.Managed
         [HarmonyPrefix, HarmonyPatch(typeof(CustomSetting), "CustomExitBt", new[] { typeof(bool) }, null)]
         public static bool Prefix_CustomSetting_CustomExitBt(bool x)
         {
-            Console.WriteLine("CustomSetting_CustomExitBt mini="+ GameClass.CustomMiniTitleBt);
+            Console.WriteLine("CustomSetting_CustomExitBt mini=" + GameClass.CustomMiniTitleBt);
             if (IO_ExSlider.cfg.FixFreeModeCustomToTitleBtn && GameClass.FreeMode && GameClass.CustomMiniTitleBt)
             {
                 // サイドメニューからタイトルに戻るとき
@@ -2308,7 +2299,7 @@ namespace Hook.nnPlugin.Managed
                 return;
 
             var path = Path.GetDirectoryName(Path.GetDirectoryName(Application.dataPath));
-            path = Path.Combine(path, $"Save/CustomData/[CH{cid}SLOT_{slot+1:00}]IoCustomData.ExPreset.xml");
+            path = Path.Combine(path, $"Save/CustomData/[CH{cid}SLOT_{slot + 1:00}]IoCustomData.ExPreset.xml");
             var pngpath = Path.Combine(Path.GetDirectoryName(Path.GetDirectoryName(Application.dataPath)), $"Save/CustomData/[CH{cid}SLOT_{slot + 1:00}]IoCustomData.png");
 
             int cindex = 0; // neko
@@ -2443,7 +2434,7 @@ namespace Hook.nnPlugin.Managed
         {
             if (Free3P.SubGirlFilter_OnAnimatorHook(animator))
                 return false;
-            
+
             // クローンのステートは処理させない
             if (CloneCtrl.CloneFilter_OnAnimatorHook(animator))
                 return false;
@@ -2504,7 +2495,7 @@ namespace Hook.nnPlugin.Managed
             // クローンのステートは処理させない
             if (CloneCtrl.CloneFilter_OnAnimatorHook(animator))
                 return false;
-            
+
             if (onHook || UnHookMecanim)
                 return true; // ループ防止
 

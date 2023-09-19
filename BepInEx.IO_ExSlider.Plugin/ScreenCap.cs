@@ -35,13 +35,12 @@ namespace BepInEx.IO_ExSlider.Plugin
                 if (InputEx.CheckModifierKeys(InputEx.ModifierKey.Shift))
                     scale = 2;
 
-                var sspath = Path.GetDirectoryName(Path.GetDirectoryName(resolveSavePath("")));
-                sspath = Path.Combine(sspath, "ScreenShot");
+                var sspath = Path.GetFullPath(Paths.GameRootPath + "/../ScreenShot");
                 if (!Directory.Exists(sspath))
                 {
                     Directory.CreateDirectory(sspath);
                 }
-                sspath = Path.Combine(sspath, DateTime.Now.ToString("yyyyMMdd-HHmmss") + ".png");
+                sspath = Path.Combine(sspath, DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss") + "_ex.png");
                 pngPath = sspath;
 
                 if (InputEx.CheckModifierKeys(InputEx.ModifierKey.Alt) && Camera.main)
