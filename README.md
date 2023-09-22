@@ -1,6 +1,6 @@
-# SpockPlugins_Miconisomi
+# SpockPlugins_InsultOrder
 
-Plugins for Miconisomi games
+Plugins for Insult Order
 
 ## Installation
 
@@ -8,36 +8,36 @@ Plugins for Miconisomi games
 2. Install the [Configuration Manager](https://github.com/BepInEx/BepInEx.ConfigurationManager/releases)
 3. Extract the plugin .zip file to your game folder
 
-## IO_EnglishLauncher (Insult Order)
+## IO_EnglishLauncher
 
 An English version of the Insult Order launcher made to look as close as possible to the original.
 
 **V1.0 - [Download](https://github.com/SpockBauru/SpockPlugins_Miconisomi/releases/tag/r6)**
 
-## IO_Demosaic (Insult Order)
+## IO_Demosaic
 Removes the mosaic censor from characters in **Insult Order**. Small footprint version.
 
 **V1.1 - [Download](https://github.com/SpockBauru/SpockPlugins_Miconisomi/releases/tag/r3)**
 
-## IO_MirrorResolution (Insult Order)
+## IO_MirrorResolution
 Lets you choose the resolution of the mirror. From potato PC up to 4k! Options are available in Configuration Manager. Use anal position to see the difference. Plugin inspired by [MeidoDev's BetterMirror](https://github.com/MeidoDev/io-plugins)
 
 **V1.0 - [Download](https://github.com/SpockBauru/SpockPlugins_Miconisomi/releases/tag/r8)**
 
-## IO_ResizeText (Insult Order)
+## IO_ResizeText
 
 Text in H-Scenes have weird scaling issues when [Translated](https://github.com/SpockBauru/IO_Translation).
 This plugin try to fix this by making the text have a fixed size.
 
 **V1.1.1 - [Download](https://github.com/SpockBauru/SpockPlugins_Miconisomi/releases/tag/r5)**
 
-## IO_DisableTextScrolling (Insult Order)
+## IO_DisableTextScrolling
 Completely removes the text scrolling effect in Insult Order dialog boxes.
 If you don't like scrolling effect, enable this plugin in the Configuration Manager (Open with F12).
 
 **V1.1 - [Download](https://github.com/SpockBauru/SpockPlugins_Miconisomi/releases/tag/r4)**
 
-## IOTextureReplacer (Insult Order)
+## IOTextureReplacer
 
 Updated version of [RipeDurian's IOTextureReplacer](https://github.com/RipeDurian/IOPlugins). I didn't make this plugin, just updated the syntax to BepInEx 5.4. 
 
@@ -48,7 +48,7 @@ Press Alt+F11 do dump all textures from the current scene into `BepInEx\Plugins\
 
 **v0.1 - [Download](https://github.com/SpockBauru/SpockPlugins_Miconisomi/releases/tag/r2)**
 
-## IO_ExSlider.Plugin (Insult Order)
+## IO_ExSlider.Plugin
 
 Updated version of [@NnAone2cmg 's IO_ExSlider.Plugin](https://twitter.com/NnAone2cmg/status/1231587360506146817). I didn't make this plugin, just updated the syntax to BepInEx 5.4.
 
