@@ -10,10 +10,23 @@ namespace TranslateRedirectedResources
     {
         static void Main(string[] args)
         {
-            string inputFolder = "GameData/BepInEx/Translation/en/Text";
+            var rootFolder = Path.Combine(Environment.CurrentDirectory, "GameData/BepInEx/Translation");
+            if (!Directory.Exists(rootFolder))
+            {
+                // Allow running directly on the IO_Translation repo
+                rootFolder = Path.Combine(Environment.CurrentDirectory, "Translation");
+                if (!Directory.Exists(rootFolder))
+                {
+                    Console.WriteLine("Cold not find the Translation folder! Place this next to the GameData or the Translation folder.");
+                    Console.ReadLine();
+                    return;
+                }
+            }
+
+            string inputFolder = Path.Combine(rootFolder, "en/Text");
             string translatedFileName;
-            string outputFolder = "GameData/BepInEx/Translation/en/RedirectedResources/assets/io_data/data/masterscenario.unity3d/";
-            string dumpFolder = "GameData/BepInEx/Translation/en/RedirectedResources/assets/io_data/data/OriginalDump";
+            string outputFolder = Path.Combine(rootFolder, "en/RedirectedResources/assets/io_data/data/masterscenario.unity3d/");
+            string dumpFolder = Path.Combine(rootFolder, "en/RedirectedResources/assets/io_data/data/OriginalDump");
 
             Dictionary<string, string> TranslationsDictionary = new Dictionary<string, string>();
             string key = "";
@@ -21,7 +34,7 @@ namespace TranslateRedirectedResources
 
             string[] fileNames = Directory.GetFiles(dumpFolder);
 
-            string[] inputFileNames= Directory.GetFiles(inputFolder);
+            string[] inputFileNames = Directory.GetFiles(inputFolder);
 
             //=========================== Populating Translation Dictionary ==========================================
             for (int i = 0; i < inputFileNames.Length; i++)
@@ -48,7 +61,7 @@ namespace TranslateRedirectedResources
                     }
                 }
             }
-        
+
 
 
             //======================================== Translating Dumped Files ============================================
@@ -185,8 +198,8 @@ namespace TranslateRedirectedResources
                 }
 
                 //Copying the last line
-                outputFile[currentIndex] = dumpedFile[dumpedFile.Length-1];
-                
+                outputFile[currentIndex] = dumpedFile[dumpedFile.Length - 1];
+
 
 
                 //Finally, writing the file!
